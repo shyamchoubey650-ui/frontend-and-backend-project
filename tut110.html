@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .ram {
+            margin-left: 400px;
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #717377 transparent transparent;
+            height: 400px;
+            width: 310px;
+            background: transparent;
+            box-shadow: 0px 0px 25px black;
+            border-radius: 16px;
+
+
+
+        }
+
+        input {
+            width: 290px;
+            border: none;
+            padding: 24px;
+            margin: 10px;
+            color: aliceblue;
+            background: transparent;
+            box-shadow: 0px 3px 15px rgba(84, 84, 84, 0.1);
+            font-size: 40px;
+            text-align: right;
+            cursor: pointer;
+        }
+
+
+        input::placeholder {
+            color: white;
+        }
+
+
+        button {
+            border: none;
+            font-size: 20px;
+            /* color: #3a4452; */
+            width: 54px;
+            height: 35px;
+            margin: 10px;
+            border-radius: 10px;
+            background: transparent;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            text-shadow: 2px 2px 3px black;
+
+        }
+
+
+        .hover:hover {
+            background-color: yellow;
+            color: yellow;
+        }
+
+
+        .equal-btn {
+            background-color: #fb7c14;
+            color: #fb7c14;
+            text-shadow: 2px 2px 3px black;
+
+
+        }
+
+        body {
+
+            width: 100%;
+            height: 100%;
+            /* background: linear-gradient(45deg,#0a0a0a,#3a4452); */
+            background-color: #3a4452;
+
+
+        }
+
+        .operator {
+            color: #6dee6d;
+            background-color: #6dee6d;
+            text-shadow: 2px 2px 3px black;
+        }
+
+        .operator:hover {
+            background-color: palevioletred;
+            color: palevioletred;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ram">
+        <div class="calcultor">
+            <input type="text" placeholder="0" id="inputbox">
+            <div>
+                <button class="operator">AC</button>
+                <button class="operator">DEL</button>
+                <button class="operator">%</button>
+                <button class="operator">/</button>
+            </div>
+            <div>
+                <button class="hover">7</button>
+                <button class="hover">8</button>
+                <button class="hover">9</button>
+                <button class="operator">*</button>
+            </div>
+            <div>
+                <button class="hover">4</button>
+                <button class="hover">5</button>
+                <button class="hover">6</button>
+                <button class="operator">-</button>
+            </div>
+            <div>
+                <button class="hover">1</button>
+                <button class="hover">2</button>
+                <button class="hover">3</button>
+                <button class="operator">+</button>
+            </div>
+            <div>
+                <button class="hover">00</button>
+                <button class="hover">0</button>
+                <button class="hover">.</button>
+                <button class="equal-btn">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let input = document.getElementById('inputbox');
+        let buttons = document.querySelectorAll('button');
+
+        let string = "";
+        let arr = Array.from(buttons);
+        arr.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.innerHTML == '=') {
+                    string = eval(string);
+                    input.value = string;
+                }
+                else if (e.target.innerHTML == 'AC') {
+                    string = ""
+                    input.value = string;
+
+                }
+                else if (e.target.innerHTML == 'DEL') {
+                    string = string.substring(0, string.length - 1);
+                    input.value = string;
+                }
+                else {
+                    string += e.target.innerHTML;
+                    input.value = string;
+                }
+
+            })
+        })
+
+
+    </script>
+
+</body>
+
+</html>
